@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(#1c003b 20%, #0e003f 80%);
+}
+
+button {
+    padding: 15px 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 0.5em;
+    outline: none;
+    border: 2px solid #929292;
+    color: white;
+    background-color: transparent;
+    letter-spacing: 0;
+    position: relative;
+    cursor: pointer;
+
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 1s, fontWeight 1s, box-shadow 1s cubic-bezier(0.075, 0.5, 0.165, 1);
+}
+
+button#bgFull:hover, button#clickTransform:hover, button#reflect:hover {
+    color: black;
+    font-weight: 600;
+    border: 1px solid #f6f6f6;
+    box-shadow: 0px 0px 20px 3px #14a787;
+}
+
+button#bgFull::before {
+    background-color: aqua;
+    width: 250px;
+    height: 100px;
+    top: 100%;
+    left: 100%;
+    content: '';
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0, 0.34, 0.21, 0.9);
+    border-radius: 5em;
+    z-index: -1;
+}
+
+button#bgFull:hover::before{
+    background-color: aqua;
+    top: -30px;
+    left: -30px;
+}
+
+button#bgFull:active::before {
+    background-color: aqua;
+}
+
+/* Button Click Transform */
+
+button#clickTransform::before {
+    background-color: aqua;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    content: '';
+    top: 15px;
+    left: 49%;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.35, 0.34, 0.2, 0.8), opacity 0.2s;
+    z-index: -1;
+    opacity: 0;
+}
+
+button#clickTransform:hover::before {
+    transform: scale(20);
+    opacity: 1;
+}
+
+/*  Button Reflect */
+
+button#reflect::before {
+    background: linear-gradient(108deg, transparent 25%, aqua 25% 45%, transparent 10% 65%, aqua 10% 75%, transparent 15%);
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    content: '';
+    top: -10px;
+    transform-origin: center;
+    z-index: -1;
+    animation: reflect 2s ease-in-out infinite;
+    opacity: .3;
+    transition: width .5s, background .2s, opacity .2s;
+}
+
+button#reflect:hover::before {
+    left: -20px;
+    position: absolute;
+    animation: 0;
+    animation-play-state: paused;
+    background-color: aqua;
+    width: 220px;
+    opacity: 1;
+}
+
+button#reflect:active::before {
+    animation: 50;
+    animation-play-state: paused;
+    background-color: aqua;
+    width: 200px;
+    opacity: 1;
+}
+
+@keyframes reflect {
+    0% {
+        transform: translateX(-150px);
+    }
+    100% {
+        transform: translateX(130px);
+    }
+}
