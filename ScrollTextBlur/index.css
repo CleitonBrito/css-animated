@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    margin: 20vh 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    width: 100vw;
+    background-image: radial-gradient(#1c003b 20%, #0e003f 80%);
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.title {
+    color: white;
+    font-size: 2vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 2em;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.texts h1 {
+    color: transparent;
+    background-image: linear-gradient(40deg, rgb(4, 0, 255) 0% 5%, rgb(115, 255, 0) 50% 90%);
+    background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-stroke: 2px #ffffff;
+    font-size: 15vw;
+    position: relative;
+}
+
+.texts h1 {
+    animation: autoBlur both;
+    animation-timeline: view(auto);
+}
+
+@keyframes autoBlur {
+    0%, 100% {
+        filter: blur(30px) contrast(2);
+    }
+    55%, 50% {
+        filter: blur(0);
+    }
+}
