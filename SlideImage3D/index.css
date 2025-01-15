@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.container {
+    background-color: #150530;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    opacity: 0.8;
+    background-image: linear-gradient(#1d0449 1px, transparent 1px), linear-gradient(to right, #1d0449 1px, #150530 1px);
+    background-size: 200px 200px;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.container::after {
+    content: '';
+    background-image: radial-gradient(#5b13d8, transparent);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: -1;
+} 
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 20%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    animation: autoRun 15s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    border-radius: 1em;
+    box-shadow: 0 0 0px 6px #ffffff;
+    transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg )) translateZ(300px);
+    z-index: 9999;
+    transition: all .3s;
+}
+
+.slider:hover {
+    animation-name: autoRun;
+    animation-play-state: paused;
+}
+
+.slider:hover .item:not(:hover)  {
+    filter: grayscale(0.6);
+    opacity: 0.4;
+}
+
+.item:hover ~ .base {
+    filter: grayscale(0.5);
+    opacity: .5;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.base {
+    width: 500px;
+    aspect-ratio: 1;
+    background-color: #1320d8;
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    text-align: center;
+    transform: rotateX(90deg) translateX(-180px);
+    z-index: 100;
+    border: 5px solid white;
+    transition: all .5s;
+}
+
+.base::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: conic-gradient(#00eeff 20% 10%, #ff0000 50%, #bd06eb, rgb(0, 255, 0) 70% 10%);
+    transform-style: preserve-3d;
+    filter: blur(50px);
+    z-index: -10;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: perspective(1000px) rotateZ(0);
+    }
+    to {
+        transform: perspective(1000px) rotateZ(360deg);
+    }
+}
+
+#item-1 {
+    background-color: #5b13d8;
+}
+
+#item-2 {
+    background-color: #1320d8;
+}
+
+#item-3 {
+    background-color: #13a0d8;
+}
+
+#item-4 {
+    background-color: #13d88c;
+}
+
+#item-5 {
+    background-color: #34d813;
+}
+
+#item-6 {
+    background-color: #bad813;
+}
+
+#item-7 {
+    background-color: #d86213;
+}
+
+#item-8 {
+    background-color: #d81313;
+}
+
+#item-9 {
+    background-color: #d81396;
+}
+
+#item-10 {
+    background-color: #b113d8;
+}
